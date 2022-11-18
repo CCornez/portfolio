@@ -1,0 +1,18 @@
+@use './base/reset';
+@use "./base/mixins" as *;
+@use './base/variables' as *;
+@use './base/fonts';
+@use "../icons/style.css";
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  color: $orange;
+  font-size: $fontSize;
+}
+
+ul {
+  @include make-col(4, $gap);
+  img {
+    @extend %responsive;
+  }
+}

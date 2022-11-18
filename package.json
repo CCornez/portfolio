@@ -1,15 +1,19 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "parcel ./src/index.html",
-    "build": "rm -r ./dist && parcel build ./src/index.html",
-    "develop": "npm run build && surge ./dist cc-develop.surge.sh",
-    "deploy": "npm run build && surge ./dist cc-portfolio.surge.sh"
-  },
-  "keywords": [],
+  "name": "starterkit",
+  "type": "module",
   "author": "Cyril Cornez",
-  "license": "ISC"
+  "scripts": {
+    "start": "parcel serve ./src/index.html --open",
+    "clean": "rm -rf ./dist ./.parcel-cache ./out",
+    "build": "npm run clean && parcel build ./src/index.html --dist-dir ./out --no-source-maps && npm run serve",
+    "serve": "live-server ./out",
+    "develop": "surge ./out --domain https://cc-develop.surge.sh",
+    "deploy": "surge ./out --domain https://cc-portfolio.surge.sh"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@parcel/transformer-sass": "^2.7.0",
+    "posthtml-include": "^1.7.1"
+  }
 }
