@@ -1,13 +1,14 @@
-import styles from './layout.module.css';
+import styles from './layout.module.scss';
+import Header from './(components)/(header)';
 
 export default function Layout({ children }) {
   return (
     <html lang='en'>
       <head>
-        <title>Next.js</title>
+        <title>Portfolio</title>
       </head>
       <body>
-        <div className={styles.header}>From layout</div>
+        <Header />
         {children}
       </body>
     </html>
