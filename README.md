@@ -1,3 +1,3 @@
 # Portfolio
 
-Follow this [link](https://cc-portfolio.surge.sh/) to view the webpage
+Follow this [link](https://portfolio-ccornez.vercel.app/) to view the webpage
