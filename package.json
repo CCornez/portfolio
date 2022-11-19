@@ -1,19 +1,19 @@
 {
-  "name": "starterkit",
-  "type": "module",
-  "author": "Cyril Cornez",
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "start": "parcel serve ./src/index.html --open",
-    "clean": "rm -rf ./dist ./.parcel-cache ./out",
-    "build": "npm run clean && parcel build ./src/index.html --dist-dir ./out --no-source-maps && npm run serve",
-    "serve": "live-server ./out",
-    "develop": "surge ./out --domain https://cc-develop.surge.sh",
-    "deploy": "surge ./out --domain https://cc-portfolio.surge.sh"
+    "dev": "start http://localhost:3000 && next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "devDependencies": {
-    "@babel/core": "^7.20.2",
-    "@parcel/transformer-sass": "^2.7.0",
-    "posthtml-include": "^1.7.1"
+  "dependencies": {
+    "eslint": "8.28.0",
+    "eslint-config-next": "13.0.4",
+    "next": "13.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.56.1"
   }
 }

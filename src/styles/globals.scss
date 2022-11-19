@@ -2,11 +2,11 @@
 @use "./base/mixins" as *;
 @use './base/variables' as *;
 @use './base/fonts';
-@use "../icons/style.css";
+@use "../../public/icons/style.css";
 
 h1 {
   font-family: 'Roboto', sans-serif;
-  color: $orange;
+  color: orange;
   font-size: $fontSize;
 }
 
