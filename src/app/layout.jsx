@@ -1,7 +1,7 @@
 import styles from './layout.module.scss';
 import Header from './(components)/(header)';
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
   return (
     <html lang='en'>
       <head>
@@ -13,4 +13,6 @@ export default function Layout({ children }) {
       </body>
     </html>
   );
-}
+};
+
+export default Layout;

@@ -4,15 +4,17 @@
 @use './base/fonts';
 @use "../../public/icons/style.css";
 
-h1 {
-  font-family: 'Roboto', sans-serif;
-  color: $orange;
-  font-size: $fontSize;
-}
-
-ul {
-  @include make-col(4, $gap);
-  img {
-    @extend %responsive;
+main {
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    color: $orange;
+    font-size: $fontSize;
+  }
+  section {
+    display: flex;
+    justify-content: space-around;
+    img {
+      @extend %responsive
+    }
   }
 }

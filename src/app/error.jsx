@@ -3,7 +3,7 @@
 import '../styles/globals.scss';
 import { useEffect } from 'react';
 
-export default function Error({ error, reset }) {
+const Error = ({ error, reset }) => {
   useEffect(() => {
     // Log the error to an error reporting service
     console.log(error);
@@ -16,4 +16,6 @@ export default function Error({ error, reset }) {
       <button onClick={() => reset()}>Reset error boundary</button>
     </div>
   );
-}
+};
+
+export default Error;
