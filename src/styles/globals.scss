@@ -4,17 +4,23 @@
 @use './base/fonts';
 @use "../../public/icons/style.css";
 
-main {
-  h1 {
-    font-family: 'Roboto', sans-serif;
-    color: $orange;
-    font-size: $fontSize;
-  }
-  section {
-    display: flex;
-    justify-content: space-around;
-    img {
-      @extend %responsive
+body {
+  font-family: 'Roboto', sans-serif;
+  main {
+    h1, h2 {
+      text-align: center;
+    }
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      color: $orange;
+      font-size: $fontSize;
+    }
+    section {
+      display: flex;
+      justify-content: space-around;
+      img {
+        @extend %responsive
+      }
     }
   }
 }

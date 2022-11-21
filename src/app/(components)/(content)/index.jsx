@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from '../(card)';
+import {
+  arrayAndArrayOfArraysToArrayOfObjects,
+  formatDate,
+} from '../../../js/helpers';
 
 const Content = () => {
   /**
@@ -10,9 +14,9 @@ const Content = () => {
    */
 
   const [data, setData] = useState(null);
+  const [cols, setCols] = useState(null);
   const [rows, setRows] = useState(null);
-  const [head, setHead] = useState(null);
-  const [body, setBody] = useState(null);
+  const [dataObj, setDataObj] = useState(null);
 
   /**
    * fetch data
@@ -26,6 +30,9 @@ const Content = () => {
     //   });
     // };
     // fetchData();
+
+    /*******************************************************************/
+    // test date while in dev
     setData({
       version: '0.6',
       reqId: '0',
@@ -75,58 +82,47 @@ const Content = () => {
         parsedNumHeaders: 1,
       },
     });
+
+    /*******************************************************************/
   }, []);
 
   /**
-   * setStat of selected data
+   * setState of selected data
    */
 
   useEffect(() => {
+    //only possible if there is actual data
     if (data) {
-      setRows(data.table.rows);
-      console.log(data);
+      setCols(data.table.cols.map((col) => col.label.replaceAll(' ', '_')));
+      setRows(data.table.rows.map((row) => row.c.map((cell) => cell.v)));
     }
+    console.log(formatDate('2021,2,1', '-'));
   }, [data]);
 
   useEffect(() => {
-    if (rows) {
-      setHead(rows[0].c);
-      setBody(rows.slice(1));
+    //only possible if cols and rows are created
+    if (cols && rows) {
+      setDataObj(arrayAndArrayOfArraysToArrayOfObjects(cols, rows));
     }
-  }, [rows]);
+  }, [cols, rows]);
 
   /**
-   * return elements when data is fetched
+   * return elements when dataObj is created
    */
 
-  if (data) {
+  if (dataObj) {
     return (
-      <table className='table'>
-        <thead>
-          <tr>
-            {head ? (
-              head.map(({ v }, i) => <th key={i}>{v}</th>)
-            ) : (
-              <th>no data</th>
-            )}
-          </tr>
-        </thead>
-        <tbody>
-          {body ? (
-            body.map(({ c }, i) => (
-              <tr key={i}>
-                {c.map(({ v }, i) => (
-                  <td key={i}>{v}</td>
-                ))}
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td>no data</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      <>
+        {dataObj.map(({ Image, Title, Description, Date, Code_used }, i) => (
+          <Card
+            key={i}
+            title={Title}
+            description={Description}
+            date={formatDate(Date.replace(/[a-z()]/gi, ''), '-')}
+            code_used={Code_used}
+          />
+        ))}
+      </>
     );
   } else {
     /**

@@ -1,8 +1,11 @@
 .card {
-    background-color: gray;
+    background-color: white;
     h1 {
         font-size: 2rem;
         color: black;
+        span {
+            color: gray;
+        }
     }
 
 }

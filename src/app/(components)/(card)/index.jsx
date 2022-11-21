@@ -1,11 +1,20 @@
 import styles from './Card.module.scss';
 
-const Card = ({ image_url, title, description }) => {
-  console.log(image_url, title, description);
+const Card = ({
+  image_url = 'http://via.placeholder.com/640x360',
+  title,
+  description,
+  date,
+  code_used,
+}) => {
   return (
     <div className={styles.card}>
       <img src={image_url} alt='' />
-      <h1>{title}</h1>
+      <p>{code_used}</p>
+      <h1>
+        {title}
+        <span>{date}</span>
+      </h1>
       <p>{description}</p>
     </div>
   );
