@@ -16,8 +16,10 @@ const Card = ({
           <Image src={image_url} fill objectFit='cover' alt='temp' />
         </figure>
         <div className={styles.code}>
-          {code_used.split(', ').map((code) => (
-            <p className={styles[code]}>{code}</p>
+          {code_used.split(', ').map((code, i) => (
+            <p key={i} className={styles[code]}>
+              {code}
+            </p>
           ))}
         </div>
       </div>
