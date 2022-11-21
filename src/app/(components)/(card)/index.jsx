@@ -2,13 +2,14 @@ import Image from 'next/image';
 import styles from './Card.module.scss';
 
 const Card = ({
-  image_url = 'https://loremflickr.com/1920/1080',
+  image_url = 'https://loremflickr.com/1920/1080', // TODO: fetch image
   title,
   description,
   date,
   code_used,
+  // TODO: fetch alt
 }) => {
-  console.log(code_used.split(', '));
+  // TODO: add detail view
   return (
     <div className={styles.card}>
       <div className={styles.image}>

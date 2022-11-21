@@ -12,7 +12,6 @@
         figure {
             // images are screen size = 1920 / 1080
             aspect-ratio: calc(1920 / 1080);
-            overflow: hidden;
             position: relative;
         }
         .code {
@@ -20,11 +19,12 @@
             position: absolute;
             bottom: 0;
             p {
-                font-size: 1.2rem;
                 border-radius: 20px;
                 padding: 0.5rem;
+                font-size: 1.2rem;
                 color: white;
                 cursor: pointer;
+                // TODO: change colors to corresponding code pastel color
                 &.HTML {
                     background-color: rgb(213, 140, 3);
                 }
@@ -55,6 +55,7 @@
         padding: 1rem 0;
         font-size: 2rem;
         color: black;
+        // TODO: import font-weight 700-900 of corresponding font
         font-weight: bold;
     }
     > p {
@@ -68,6 +69,7 @@
         }
     }
     &:hover {
+        // TODO: add box-shadow && other animations if needed
         transform: scale(1.05);
     }
 }

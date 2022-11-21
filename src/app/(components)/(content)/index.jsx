@@ -116,10 +116,12 @@ const Content = () => {
         {dataObj.map(({ Image, Title, Description, Date, Code_used }, i) => (
           <Card
             key={i}
+            // TODO: fetch Image
             title={Title}
             description={Description}
             date={formatDate(Date.replace(/[a-z()]/gi, ''), '-')}
             code_used={Code_used}
+            // TODO: fetch alt
           />
         ))}
       </>
