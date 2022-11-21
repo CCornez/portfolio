@@ -1,21 +1,29 @@
+import Image from 'next/image';
 import styles from './Card.module.scss';
 
 const Card = ({
-  image_url = 'http://via.placeholder.com/640x360',
+  image_url = 'https://loremflickr.com/1920/1080',
   title,
   description,
   date,
   code_used,
 }) => {
+  console.log(code_used.split(', '));
   return (
     <div className={styles.card}>
-      <img src={image_url} alt='' />
-      <p>{code_used}</p>
-      <h1>
-        {title}
-        <span>{date}</span>
-      </h1>
+      <div className={styles.image}>
+        <figure>
+          <Image src={image_url} fill objectFit='cover' alt='temp' />
+        </figure>
+        <div className={styles.code}>
+          {code_used.split(', ').map((code) => (
+            <p className={styles[code]}>{code}</p>
+          ))}
+        </div>
+      </div>
+      <h1>{title}</h1>
       <p>{description}</p>
+      <p>{date}</p>
     </div>
   );
 };

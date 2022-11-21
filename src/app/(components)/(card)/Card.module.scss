@@ -1,11 +1,73 @@
+@use '../../../styles/base/mixins' as *;
+
 .card {
+    width: 30%;
+    padding: 1rem;
+    padding-bottom: 2rem;
     background-color: white;
+    transition: all 500ms;
+    position: relative;
+    .image {
+        position: relative;
+        figure {
+            // images are screen size = 1920 / 1080
+            aspect-ratio: calc(1920 / 1080);
+            overflow: hidden;
+            position: relative;
+        }
+        .code {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            p {
+                font-size: 1.2rem;
+                border-radius: 20px;
+                padding: 0.5rem;
+                color: white;
+                cursor: pointer;
+                &.HTML {
+                    background-color: rgb(213, 140, 3);
+                }
+                &.CSS {
+                    background-color: rgb(77, 77, 254);
+                }
+                &.SCSS {
+                    background-color: rgb(254, 77, 236);
+                }
+                &.Javascript {                
+                    background-color: rgb(208, 208, 0);
+                }
+                &.JSX {                
+                    background-color: rgb(152, 0, 166);
+                }
+                &.React {
+                    background-color: rgb(77, 180, 254);
+                }
+                &.NextJS {
+                    background-color: black;
+                }
+            }
+        }
+    }
     h1 {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem 0;
         font-size: 2rem;
         color: black;
-        span {
+        font-weight: bold;
+    }
+    > p {
+        font-size: 1.4rem;
+        &:last-of-type {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 1rem;
             color: gray;
         }
     }
-
+    &:hover {
+        transform: scale(1.05);
+    }
 }
