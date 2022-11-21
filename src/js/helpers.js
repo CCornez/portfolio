@@ -16,7 +16,7 @@ export const arrayAndArrayOfArraysToArrayOfObjects = (arr1, arr2) => {
 export const formatDate = (dateString, separator = '/', zero = true) => {
   // deconstruct array
   /**
-   * HARDCODED AT THE MOMENT: sting must be year,month,day
+   * HARDCODED AT THE MOMENT: string must be 'year,month,day'
    */
   let [year, month, day] = dateString.split(',');
 

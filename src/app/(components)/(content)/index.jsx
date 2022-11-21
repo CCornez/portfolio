@@ -32,7 +32,7 @@ const Content = () => {
     // fetchData();
 
     /*******************************************************************/
-    // test date while in dev
+    // test data while in dev
     setData({
       version: '0.6',
       reqId: '0',
