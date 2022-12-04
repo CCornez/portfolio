@@ -3,14 +3,14 @@ export const randomIntFromInterval = (min, max) =>
 
 export const twoArraysToObject = (arr1, arr2) => {
   // create object with arr1 as keys and arr2 as values
-  return arr2.reduce((acc, el, i) => {
+  return arr2?.reduce((acc, el, i) => {
     return { ...acc, [arr1[i]]: el };
   }, {});
 };
 
 export const arrayAndArrayOfArraysToArrayOfObjects = (arr1, arr2) => {
   // create an array of object with arr1 as keys and arr2 as array of values
-  return arr2.map((el) => twoArraysToObject(arr1, el));
+  return arr2?.map((el) => twoArraysToObject(arr1, el));
 };
 
 export const formatDate = (dateString, separator = '/', zero = true) => {

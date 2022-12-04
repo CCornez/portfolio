@@ -1,0 +1,19 @@
+@use '../../../styles/base/mixins' as *;
+
+.row {
+    display: grid;
+    grid-template-columns: auto 1fr 3fr 1fr 1fr;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    padding: 1rem;
+    background-color: white;
+    position: relative;
+    figure {
+        position: relative;
+    }
+    p {
+        padding-left: 1rem;
+        font-size: 1.4rem;
+    }
+}
