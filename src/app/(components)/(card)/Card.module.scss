@@ -1,75 +1,90 @@
 @use '../../../styles/base/mixins' as *;
 
 .card {
-    width: 30%;
-    padding: 1rem;
-    padding-bottom: 2rem;
+    width: 100%;
+    padding: 1.5rem;
     background-color: white;
-    transition: all 500ms;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s; // Makes the text blurry at the moment
     position: relative;
+    overflow: hidden;
     .image {
         position: relative;
+        border-radius: 12px;
+        overflow: hidden;
         figure {
-            // images are screen size = 1920 / 1080
-            aspect-ratio: calc(1920 / 1080);
+            aspect-ratio: 16 / 9;
             position: relative;
         }
         .code {
             display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
             position: absolute;
-            bottom: 0;
+            bottom: 10px;
+            left: 10px;
             p {
                 border-radius: 20px;
-                padding: 0.5rem;
+                padding: 0.6rem 1rem;
                 font-size: 1.2rem;
+                font-weight: 600;
                 color: white;
                 cursor: pointer;
-                // TODO: change colors to corresponding code pastel color
+                opacity: 0.8;
+                transition: all 0.5s; // Makes the text blurry at the moment
+                &:hover {
+                    opacity: 1;
+                }
                 &.HTML {
-                    background-color: rgb(213, 140, 3);
+                    background-color: #E34F26;
                 }
                 &.CSS {
-                    background-color: rgb(77, 77, 254);
+                    background-color: #1572B6;
                 }
                 &.SCSS {
-                    background-color: rgb(254, 77, 236);
+                    background-color: #CF649A;
                 }
                 &.Javascript {                
-                    background-color: rgb(208, 208, 0);
+                    background-color: #F7DF1E; 
+                    color: black;
                 }
                 &.JSX {                
-                    background-color: rgb(152, 0, 166);
+                    background-color: #764ABC;
                 }
                 &.React {
-                    background-color: rgb(77, 180, 254);
+                    background-color: #61DAFB;
+                    color: black;
                 }
                 &.NextJS {
-                    background-color: black;
+                    background-color: #000000;
+                }
+                &.Default {
+                    background-color: gray;
                 }
             }
         }
     }
     h1 {
-        display: flex;
-        justify-content: space-between;
-        padding: 1rem 0;
-        font-size: 2rem;
+        margin-top: 1rem;
+        font-size: 1.8rem;
+        font-weight: 800;
         color: black;
-        // TODO: import font-weight 700-900 of corresponding font
-        font-weight: bold;
     }
     > p {
-        font-size: 1.4rem;
-        &:last-of-type {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            font-size: 1rem;
-            color: gray;
-        }
+        font-size: 1.2rem;
+        color: #444;
+        line-height: 1.4;
+    }
+    .date {
+        font-size: 1rem;
+        color: gray;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
     }
     &:hover {
-        // TODO: add box-shadow && other animations if needed
         transform: scale(1.05);
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
     }
 }
