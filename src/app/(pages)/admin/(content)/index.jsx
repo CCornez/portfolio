@@ -8,7 +8,8 @@ const Content = async () => {
    * fetch data
    */
 
-  const data = await getData();
+  // const data = await getData();
+  const data = 1;
 
   /**
    * return elements when data is available
@@ -18,7 +19,7 @@ const Content = async () => {
     return (
       <>
         <section className={styles.admin}>
-          {data.map(({ Image, Title, Description, Date, Code_used }, i) => (
+          {/* {data.map(({ Image, Title, Description, Date, Code_used }, i) => (
             <Table
               key={i}
               // TODO: fetch Image
@@ -28,7 +29,7 @@ const Content = async () => {
               code_used={Code_used}
               // TODO: fetch alt
             />
-          ))}
+          ))} */}
         </section>
       </>
     );

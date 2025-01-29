@@ -1,24 +1,47 @@
 import 'server-only';
-import axios from 'axios';
-import { arrayAndArrayOfArraysToArrayOfObjects } from '../../js/helpers';
 
 export default async function getData() {
   /**
    * fetch data
    */
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${process.env.SHEET_ID}/values/Sheet1!A1:Z?key=${process.env.API_KEY}`;
 
-  const key = process.env.API_KEY;
-  const res = await axios(key).then((res) =>
-    JSON.parse(res.data.substring(47).slice(0, -2))
-  );
+  try {
+    const response = await fetch(url);
 
-  /**
-   * create dataObj
-   */
+    if (!response.ok) {
+      throw new Error(
+        `Failed to fetch data: ${response.status} ${response.statusText}`
+      );
+    }
 
-  const cols = res?.table.cols.map((col) => col.label.replaceAll(' ', '_'));
-  const rows = res?.table.rows.map((row) => row.c.map((cell) => cell.v));
-  const dataObj = arrayAndArrayOfArraysToArrayOfObjects(cols, rows);
+    const data = await response.json();
 
-  return dataObj;
+    // Validate response structure
+    if (!data.values || !Array.isArray(data.values) || data.values.length < 1) {
+      throw new Error(
+        `Unexpected API response format. Expected "data.values" to be an array. Received: ${JSON.stringify(
+          data
+        )}`
+      );
+    }
+
+    // Extract headers and rows
+    const [headers, ...rows] = data.values;
+
+    // Ensure headers and rows exist
+    if (!headers || !Array.isArray(headers) || headers.length === 0) {
+      throw new Error(
+        `Invalid API response: Missing headers in "data.values".`
+      );
+    }
+
+    return {
+      headers,
+      rows,
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+    return { error: error.message, headers: [], rows: [] }; // Return an error state
+  }
 }
